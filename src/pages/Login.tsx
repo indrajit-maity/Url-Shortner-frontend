@@ -32,15 +32,14 @@ export default function Login() {
 
   const onSubmit = async (values: FormValues) => {
     try {
-      const { token } = await login(values);
-      setSession(token);
-      toast.success("Logged in");
+      const { token, user } = await login(values);
+      setSession(token, user);
+      toast.success(`Welcome back, ${user.username}`);
       navigate(from, { replace: true });
     } catch (err) {
       toast.error(getErrorMessage(err, "Incorrect email or password"));
     }
   };
-
   return (
     <AuthShell
       title="Log in"
