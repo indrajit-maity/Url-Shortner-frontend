@@ -19,7 +19,6 @@ const SOURCES: { value: BlocklistSource; label: string }[] = [
 
 const sourceLabel = (s: BlocklistSource) => SOURCES.find((x) => x.value === s)?.label ?? s;
 
-// The list shows the domain the backend extracted, so match a typed link to it by hostname.
 const hostOf = (value: string) => {
   try {
     return new URL(value.trim()).hostname.replace(/^www\./, "").toLowerCase();
